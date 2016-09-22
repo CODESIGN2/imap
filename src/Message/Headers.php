@@ -52,7 +52,10 @@ class Headers extends Parameters
             case 'date':
                 $value = $this->decode($value);
                 $value = preg_replace('/([^\(]*)\(.*\)/', '$1', $value);
-
+                $vallen = strlen($value);
+                if( ($value[$vallen-1] == 'T') && ($value[$vallen-2] == 'U') && ($value[$vallen-3] == ' ')) {
+                  $value .= 'C';
+                }
                 return new \DateTime($value);
             case 'from':
                 return $this->decodeEmailAddress(current($value));
