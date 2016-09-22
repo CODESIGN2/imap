@@ -61,6 +61,6 @@ class EmailAddress
 
     public function __toString()
     {
-        return $this->getAddress();
+        return "{$this->getAddress()}";
     }
 }
