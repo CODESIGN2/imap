@@ -75,7 +75,7 @@ class Headers extends Parameters
     private function decodeEmailAddress($value)
     {
         return new EmailAddress(
-            $value->mailbox,
+            isset($value->mailbox) ? $value->mailbox : '',
             isset($value->host) ? $value->host : null,
             isset($value->personal) ? $this->decode($value->personal) : null
         );
